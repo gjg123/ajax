@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery  jsonp请求</title>
+</head>
+<body>
+	<h2>jquery  jsonp主要需要参数有 dataType:'jsonp'</h2>
+	<h2>jsonp:'callback'可设置可不设置  如果是后台返回可不设置 如果是本地模拟jsonp数据需要设置</h2>
+	<h2>jsonpCallback:'jsonpCallback' 可设置可不设置  如果是后台返回可不设置 如果是本地模拟jsonp数据需要设置</h2>
+</body>
+</html>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		type:'get',        										//请求方式
+		url:'data/jsonpData.json',								//请求地址
+		//get带参数要写在url后面
+		//url:'data/data.json?username=杨老湿&pwd=123456',		//请求地址
+		dataType:'jsonp',										//预期服务器返回的数据类型
+		jsonp:'callback',										//传给后台的key
+		jsonpCallback:'jsonpCallback',							//传给后台value 回调函数名称
+		success:function(data){									//请求成功回调函数
+			//弹出后台返回信息
+			alert(data.message);
+		}
+	})
+</script>

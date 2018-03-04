@@ -1,0 +1,4 @@
+jsonpCallback({
+  "result":1,
+  "message":"请求ajax数据成功"
+})

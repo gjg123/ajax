@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp请求</title>
+</head>
+<body>
+	<h2>jsonp实现原理就是动态创建一个script标签  利用script标签的src不受同源策略的限制</h2>
+	<h3>jsonp只能用于get请求 post请求的话不可以</h3>
+</body>
+</html>
+<script type="text/javascript">
+   //创建一个script
+   var script = document.createElement('script');
+   /*
+   *设置script src属性   src就是接口地址  
+   *callback=jsonpCallback  后面jsonpCallback就是回调的方法名
+   *
+   */
+   script.setAttribute('src','data/jsonpData.json?callback=jsonpCallback');
+   //插入到页面头部
+   document.getElementsByTagName('head')[0].appendChild(script);
+   //回调方法
+   function jsonpCallback(data){
+   	alert(data.message);
+   }
+</script>

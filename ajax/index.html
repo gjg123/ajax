@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="http://jd.com"/>
+	</body>
+</html>
+<script src="http://"> </script>
+<script>
+//1:面试问题 原生的ajax创建步骤?
+/*2:什么是异步什么是同步?	
+ *  同步:必须是一行一行的去执行代码 当前变量和函数执行完毕之后才能去执行下一行代码
+ * 	异步:已经编译代码  他会先小弟走  浏览器最后时候触发事件  -->事件
+ */
+/*
+ * 3:关于异步的面试题
+ * 	console.log(1);
+ *  setTimeout(function(){
+ * 		console.log(2);
+ *  })
+ *	console.log(3);
+ */
+
+
+   //创建一个ajax对象
+   var xhr = new XMLHttpRequest();
+   //初始化配置请求参数
+   xhr.open('GET','http://192.168.0.3?userName=武大郎&pwd=123456');
+   //发生请求
+   xhr.send();
+   //接收数据
+   xhr.onreadystatechange = function(){
+   		/*
+   		 * readyState 有几种状态
+   		 * 0    未发送请求
+   		 * 1    创建请求 正在发生
+   		 * 2    发送请求成功
+   		 * 3    接收数据 并解析数据
+   		 * 4    接收数据
+   		 */
+   		if(xhr.readyState == 4){
+   			//json对象和json字符串
+   			/*
+   			 * jsonp 才会jsonp对象
+   			 * 普通get和post请求  才会返回json字符串
+   			 */
+   			var resp = JSON.stringify(xhr.responseText);
+   			//接收xml数据
+   			var xmlresp = JSON.responseXML;
+   		}
+   }
+   
+   
+   
+   // 1:josnp是用来解决跨域
+   /*
+    * 2:什么是跨域?
+    * 1:不同源  (因为浏览器规定同源策略)
+    * 2:http://192.168.0.3:80/index.html
+    *   1:协议相同
+    *   2:主域名相同  
+    * 	3:子域名相同
+    *   4:端口号相同
+    *   5:域名和ip都得一致
+    */ 
+   	
+   	
+   	/*
+   	 * 动态创建srcipt
+   	 * 利用srcipt的src属性不受同源策略限制 把接口绑定给src
+   	 */
+// 	  var srcipt = document.createElement('script');
+// 	  srcipt.src = 'http://192.168.0.3:8020/%E5%81%9A%E7%8F%AD%E7%BA%A7%E8%A1%A8/class_91.json?callback=jsonpcallback';
+// 	  document.head.appendChild(srcipt);
+	  
+	  //通过回调函数拿到后台传递的数据
+	  function jsonpcallback(data){
+	  	console.log(data);
+	  }
+	  
+	  
+	  
+	 
+</script>
+<script src="index.js"> </script>

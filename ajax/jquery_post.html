@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery  get请求方法</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+	//第一种方法
+	$.ajax({
+		type:'post',        			//请求方式
+		url:'data/data.json',			//请求地址
+		//post带参数要写在data里面
+		data:{
+			username:'杨老湿',
+			pwd:'123456'
+		},
+		success:function(data){		    //请求成功回调函数
+			//弹出后台返回信息
+			alert(data.message);
+		}
+	})
+	//第二种简写方法
+	// $.post('data/data.json',{username:'杨老湿',pwd:'123456'},function(data){
+	// 	alert(data.message);
+	// })
+</script>
